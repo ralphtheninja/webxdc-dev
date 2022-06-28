@@ -1,6 +1,7 @@
 import expressWs from "express-ws";
 import { WebSocket, Server } from "ws";
 import open from "open";
+import cors from "cors";
 
 import { JsonValue, ReceivedUpdate } from "../types/webxdc";
 import { createProcessor, IProcessor, WebXdcMulti, OnMessage } from "./message";

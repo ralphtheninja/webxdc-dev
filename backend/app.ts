@@ -1,6 +1,7 @@
 import express, { Express } from "express";
 import expressWs from "express-ws";
 import { createProxyMiddleware } from "http-proxy-middleware";
+import cors from "cors";
 
 import { Location } from "./location";
 import { AppInfo } from "./appInfo";
@@ -85,6 +86,8 @@ export function createPeer(
 ): expressWs.Instance {
   const expressApp = express();
   const wsInstance = expressWs(expressApp);
+
+  wsInstance.app.use(cors({ origin: "http://localhost:7001" }));
 
   // layer the simulated directory with webxdc tooling in front of webxdc path
   // this has to be injected as it differs between dev and production
